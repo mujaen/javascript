@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <script>
+        const setRandomGroup = () => {
+            console.time('setRandomGroup');
+            const member = ["1","2.","3","4","5","6","7","8","9","10","11","12","13","14","15"];
+            const size = 2;
+
+            const mixMember = member.sort(function() {
+                return Math.random() - 0.5;
+            });
+
+            const setNewGroup = Array.from({length: Math.ceil(mixMember.length / size)}).fill("");
+
+            const intoNewGroup = setNewGroup.map(function() {
+                return this.splice(0, size);
+            }, mixMember.slice());
+
+            console.log(intoNewGroup);
+            console.timeEnd('setRandomGroup');
+        };
+
+        setRandomGroup();
+    </script>
+</head>
+<body>
+    <section class="randomBox">
+    </section>
+</body>
+</html>
+
+
