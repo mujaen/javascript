@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+
+        const objectConcat = () => {
+            const array1 = [1, 2, 3, 4, "띄   어쓰 기", "b"];
+            const array2 = ["중복", 5, 6, 7, 4, "문자", "a"];
+
+            const concat = array1.concat(array2);
+
+            //응용1. 중복제거
+            const array = Array.from(new Set(array1.concat(array2)));
+
+            //응용2. 문자 출력 후 숫자
+            const str = String(array);
+            const onlyNumber = str.replace(/\D/g, '');
+            const onlyString = str.replace(/[^a-zA-Zㄱ-힗]/g, '');
+            const text = onlyString + onlyNumber;
+
+            document.querySelector('.item').innerHTML = concat + '<br><br><br>' + array + '<br><br><br>' + text;
+        };
+
+
+        const init = _ => {
+            objectConcat();
+        };
+
+        window.onload = _ => {
+            init();
+        };
+    </script>
+</head>
+<body>
+    <div class="item"></div>
+</body>
+</html>
